@@ -26,3 +26,5 @@ tensorflow-estimator==1.14.0
 termcolor==1.1.0
 Werkzeug==0.15.6
 wrapt==1.11.2
+flask
+flask_cors
