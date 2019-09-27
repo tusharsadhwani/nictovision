@@ -3,9 +3,9 @@ function read_file(file) {
 
   var reader = new FileReader()
   reader.onload = function(){
-    var dataURL = reader.result
-    console.log(dataURL)
+    let dataURL = reader.result
+    let uploaded_img = document.getElementById('uploaded_img')
+    uploaded_img.src = dataURL
   }
   img_data = reader.readAsDataURL(input.files[0])
-  console.log(img_data)
 } 

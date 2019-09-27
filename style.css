@@ -23,3 +23,9 @@ input[type="file"] {
 .icon {
     font-size: 48px;
 }
+
+#uploaded_img {
+    width: 80%;
+    display: flex;
+    margin: auto;
+}
