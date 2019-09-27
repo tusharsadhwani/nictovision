@@ -15,12 +15,9 @@ body {
 .fileuploader {
     width: 70px;
     height: 70px;
-    border-radius: 100%;
-    border: 1px solid;
-    border-radius: 100%;
-    padding: 32px;
+    padding: 32px 0 5px 0;
     display: flex;
-    margin: 5px auto;
+    margin: 5px auto 0px auto;
 }
 input[type="file"] {
     display: none;
@@ -29,13 +26,21 @@ input[type="file"] {
     width: 100%;
     height: auto;
 }
+.upload_tag_line {
+    text-align: center;
+    margin: 0;
+    font-size: 25px;
+}
 .submitbtn {
-    background: green;
+    background: black;
     color: white;
     padding: 10px;
     font-weight: 600;
     font-size: 15px;
-    border-radius: 25px;
+    border-radius: 5px;
+    width: 100%;
+    position: absolute;
+    bottom: 3px;
 }
 
 #uploaded_img {
