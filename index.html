@@ -4,15 +4,61 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="style.css">
-  <script src="index.js"></script>
+  <script>
+  let dataURL
+
+let img_data
+
+function b64toBlob(dataURI) {
+
+  var byteString = atob(dataURI.split(',')[1]);
+  var ab = new ArrayBuffer(byteString.length);
+  var ia = new Uint8Array(ab);
+
+  for (var i = 0; i < byteString.length; i++) {
+      ia[i] = byteString.charCodeAt(i);
+  }
+  return new Blob([ab], { type: 'image/dng' });
+}
+
+function read_file(file) {
+  var input = file.target
+
+  var reader = new FileReader()
+  reader.onload = function(){
+    dataURL = reader.result
+    // let uploaded_img = document.getElementById('uploaded_img')
+    // uploaded_img.src = dataURL
+    console.log(dataURL)
+  }
+  img_data = reader.readAsDataURL(input.files[0])
+} 
+
+// function upload_img() {
+//   const formData = new FormData()
+
+//   var blob = b64toBlob(dataURL)
+
+//   formData.append('uploaded_img', blob)
+//   fetch('http://localhost:5000/upload', {
+//     method: 'POST',
+//     headers: {
+//       "Content-Type": 'multipart/form-data'
+//     },
+//     body: formData
+//   })
+//   .then(res => console.log(res))
+//   .catch(err => console.error(err))
+// }
+  </script>
   <title>Nictovision</title>
 </head>
 <body>
   <h2 class="Header"> Nacto Vision </h2>
-  <form action="http://localhost:5000/upload" method="POST" enctype=multipart/form-data>
-    <label for="upload_img" class="fileuploader" title="upload an dng image">
+  <form method="POST" enctype=multipart/form-data>
+    <label for="upload_img" class="fileuploader">
       <img src="./icons/upload-solid.svg" alt="" class="icon">
-      <input type="file" accept='image/*' name="upload_img" id="upload_img" onchange="read_file(event)">
+      <input type="file" name="upload_img" id="upload_img" onchange="read_file(event)">
     </label>
     <p class="upload_tag_line">Upload Your Files</p>
     <div>
