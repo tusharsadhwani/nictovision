@@ -17,7 +17,7 @@
   <form action="http://localhost:5000/upload" method="POST" enctype=multipart/form-data>
     <label for="upload_img" class="fileuploader">
       <i class="fas fa-upload icon"></i>
-      <input type="file" accept='image/*' name="upload_img" id="upload_img" onchange="read_file(event)">
+      <input type="file" name="upload_img" id="upload_img" onchange="read_file(event)">
     </label>
     <input type="submit" value="Submit">
   </form>
