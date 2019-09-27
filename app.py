@@ -1,7 +1,10 @@
 import flask
 from flask import request, redirect
 from flask_cors import CORS
+import os.path
+
 import draw_inference
+import dng2png
 
 app = flask.Flask(__name__)
 app.config["DEBUG"] = True
@@ -30,11 +33,12 @@ def orig():
 
 @app.route('/', methods=['POST'])
 def upload_img():
-    print(request.files)
+    # print(request.files)
     img = request.files.get('upload_img', None)
     with open('uploaded_img.dng', 'wb') as f:
         f.write(img.read())
     
+    dng2png.convert('./uploaded_img.dng')
     new_path = draw_inference.infrence('./uploaded_img.dng', 'ios')
     print(new_path)
     return redirect('/')

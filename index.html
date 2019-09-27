@@ -80,6 +80,52 @@ input[type="file"] {
     border-radius: 5px;
     box-shadow: 10px 10px 10px #cccccc;
 }
+/**
+* loader
+*/
+.lds-ring-container {
+  display: none;
+  width: 64px;
+  margin: auto;
+  margin-top: 20px;
+}
+.lds-ring {
+  display: inline-block;
+  position: relative;
+  width: 64px;
+  height: 64px;
+}
+.lds-ring div {
+  box-sizing: border-box;
+  display: block;
+  position: absolute;
+  width: 51px;
+  height: 51px;
+  margin: 6px;
+  border: 6px solid #3032b6;
+  border-radius: 50%;
+  animation: lds-ring 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+  border-color: #3032b6 transparent transparent transparent;
+}
+.lds-ring div:nth-child(1) {
+  animation-delay: -0.45s;
+}
+.lds-ring div:nth-child(2) {
+  animation-delay: -0.3s;
+}
+.lds-ring div:nth-child(3) {
+  animation-delay: -0.15s;
+}
+@keyframes lds-ring {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+
   </style>
   <script>
   let dataURL
@@ -127,6 +173,16 @@ function read_file(file) {
 //   .then(res => console.log(res))
 //   .catch(err => console.error(err))
 // }
+function show_loader() {
+    let loader = document.getElementById("loader")
+    loader.style.display = "block"
+}
+
+let input_img= document.getElementById("input-image")
+if (input_img.src) {
+    document.getElementById("p-input").textContent = "Input: "
+    document.getElementById("p-output").textContent = "Output: "
+}
   </script>
   <title>Nictovision</title>
 </head>
@@ -141,12 +197,15 @@ function read_file(file) {
     </label>
     <p class="upload_tag_line">Upload Your Files</p>
    </div>
-   <p>Input:</p>
-   <img src="original/input.png" alt="" class="uploaded_img">
-   <p>Output:</p>
+   <div id="loader" class="lds-ring-container">
+     <div class="lds-ring"><div></div><div></div><div></div><div></div></div>
+   </div>
+   <p id="p-input"></p>
+   <img id="input-image" src="original/input.png" alt="" class="uploaded_img">
+   <p id="p-output"></p>
    <img src="result/ios.png" alt="" class="uploaded_img">
    <div>
-    <input type="submit" class="submitbtn" value="Submit">
+    <input type="submit" class="submitbtn" value="Submit" onclick="show_loader()">
    </div>
   </form>
 </body>
