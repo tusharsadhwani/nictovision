@@ -42,3 +42,4 @@ def upload_img():
     new_path = draw_inference.infrence('./uploaded_img.dng', 'ios')
     print(new_path)
     return redirect('/')
+

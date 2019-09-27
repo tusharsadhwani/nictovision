@@ -58,8 +58,8 @@ input[type="file"] {
     font-size: 15px;
     border-radius: 5px;
     width: 100%;
-    position: absolute;
-    bottom: 3px;
+    position: fixed;
+    bottom: 1px;
     box-shadow: 0px 1px 10px #cccccc;
 }
 @media screen and (min-width: 600px) {
@@ -177,12 +177,6 @@ function show_loader() {
     let loader = document.getElementById("loader")
     loader.style.display = "block"
 }
-
-let input_img= document.getElementById("input-image")
-if (input_img.src) {
-    document.getElementById("p-input").textContent = "Input: "
-    document.getElementById("p-output").textContent = "Output: "
-}
   </script>
   <title>Nictovision</title>
 </head>
@@ -203,7 +197,7 @@ if (input_img.src) {
    <p id="p-input"></p>
    <img id="input-image" src="original/input.png" alt="" class="uploaded_img">
    <p id="p-output"></p>
-   <img src="result/ios.png" alt="" class="uploaded_img">
+   <img src="result/ios.png" alt="" style="margin-bottom: 30px;" class="uploaded_img">
    <div>
     <input type="submit" class="submitbtn" value="Submit" onclick="show_loader()">
    </div>
