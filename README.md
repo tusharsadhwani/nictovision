@@ -1,4 +1,4 @@
-# __nictovision__
+# __Nictovision__
 ### Prerequisites
 - Browser (Chrome or safari)
 - Python
