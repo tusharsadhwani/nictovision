@@ -1,3 +1,6 @@
+body {
+    margin: 0;
+}
 .Header {
     text-align: center;
     background: #2c2b2b;
@@ -5,11 +8,13 @@
     font-weight: bolder;
     font-size: 26px;
     padding: 10px 0;
+    width: 100%;
+    margin: 0;
 }
 
 .fileuploader {
-    width: 30%;
-    height: auto;
+    width: 70px;
+    height: 70px;
     border-radius: 100%;
     border: 1px solid;
     border-radius: 100%;
@@ -21,7 +26,16 @@ input[type="file"] {
     display: none;
 }
 .icon {
-    font-size: 48px;
+    width: 100%;
+    height: auto;
+}
+.submitbtn {
+    background: green;
+    color: white;
+    padding: 10px;
+    font-weight: 600;
+    font-size: 15px;
+    border-radius: 25px;
 }
 
 #uploaded_img {
