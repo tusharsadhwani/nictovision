@@ -3,7 +3,59 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+  <style>
+  body {
+    margin: 0;
+}
+.Header {
+    text-align: center;
+    background: #2c2b2b;
+    color: #fff;
+    font-weight: bolder;
+    font-size: 26px;
+    padding: 10px 0;
+    width: 100%;
+    margin: 0;
+}
+
+.fileuploader {
+    width: 70px;
+    height: 70px;
+    padding: 32px 0 5px 0;
+    display: flex;
+    margin: 5px auto 0px auto;
+}
+input[type="file"] {
+    display: none;
+}
+.icon {
+    width: 100%;
+    height: auto;
+}
+.upload_tag_line {
+    text-align: center;
+    margin: 0;
+    font-size: 25px;
+}
+.submitbtn {
+    background: black;
+    color: white;
+    padding: 10px;
+    font-weight: 600;
+    font-size: 15px;
+    border-radius: 5px;
+    width: 100%;
+    position: absolute;
+    bottom: 3px;
+}
+
+#uploaded_img {
+    width: 80%;
+    display: flex;
+    margin: auto;
+}
+  </style>
   <script>
   let dataURL
 
@@ -57,7 +109,8 @@ function read_file(file) {
   <h2 class="Header"> Nacto Vision </h2>
   <form method="POST" enctype=multipart/form-data>
     <label for="upload_img" class="fileuploader">
-      <img src="./icons/upload-solid.svg" alt="" class="icon">
+      <!-- <img src="./icons/upload-solid.svg" alt="" class="icon"> -->
+      <i class="fas fa-upload icon"></i>
       <input type="file" name="upload_img" id="upload_img" onchange="read_file(event)">
     </label>
     <p class="upload_tag_line">Upload Your Files</p>
@@ -65,6 +118,6 @@ function read_file(file) {
       <input type="submit" class="submitbtn" value="Submit">
     </div>
   </form>
-  <img src="" alt="" id="uploaded_img">
+  <img src="result/ios.png" alt="" id="uploaded_img">
 </body>
 </html>

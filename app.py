@@ -1,5 +1,5 @@
 import flask
-from flask import request
+from flask import request, redirect
 from flask_cors import CORS
 import draw_inference
 
@@ -12,6 +12,11 @@ def homepage():
     with open('index.html') as f:
         return f.read()
 
+@app.route('/result/ios.png', methods=['GET'])
+def icon():
+    with open('result/ios.png', 'rb') as f:
+        return f.read()
+
 @app.route('/', methods=['POST'])
 def upload_img():
     print(request.files)
@@ -21,4 +26,4 @@ def upload_img():
     
     new_path = draw_inference.infrence('./uploaded_img.dng', 'ios')
     print(new_path)
-    return "ok"
+    return redirect('/')
