@@ -4,14 +4,21 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
+        integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
   <title>Nictovision</title>
 </head>
 <body>
-  <h1 class="heading">Nictovision</h1>
-  
+  <nav class="Header">
+  <h2> Nacto Vision </h2>
+  </nav>
   <form action="http://localhost:5000/upload" method="POST" enctype=multipart/form-data>
-    <input type="file" accept='image/*' name="upload_img" id="upload_img">
-    <input type="button" value="Submit">
+    <label for="upload_img" class="fileuploader">
+      <i class="fas fa-upload icon"></i>
+      <input type="file" accept='image/*' name="upload_img" id="upload_img" onchange="read_file(event)">
+    </label>
+    <input type="submit" value="Submit">
   </form>
 
   <script src="index.js"></script>
