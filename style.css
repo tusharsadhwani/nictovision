@@ -1,3 +1,25 @@
-.heading {
+.Header {
     text-align: center;
+    background: #2c2b2b;
+    color: #fff;
+    font-weight: bolder;
+    font-size: 26px;
+    padding: 10px 0;
+}
+
+.fileuploader {
+    width: 30%;
+    height: auto;
+    border-radius: 100%;
+    border: 1px solid;
+    border-radius: 100%;
+    padding: 32px;
+    display: flex;
+    margin: 5px auto;
+}
+input[type="file"] {
+    display: none;
+}
+.icon {
+    font-size: 48px;
 }
