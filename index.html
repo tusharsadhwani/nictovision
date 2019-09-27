@@ -3,24 +3,210 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="style.css">
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
-        integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
-  <script src="index.js"></script>
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Poppins&display=swap" rel="stylesheet">
+  <style>
+  body {
+    margin: 0;
+    font-family: 'Open Sans', sans-serif;
+    background-color: #f8fafb;
+}
+.Header {
+    text-align: center;
+    box-shadow: 0px 1px 10px #cccccc;
+    color: #222;
+    font-weight: bolder;
+    font-size: 22px;
+    padding: 10px 0;
+    width: 100%;
+    margin: 0;
+}
+.fileuploaderWrapper {
+  padding: 15px 0;
+  width: 250px;
+  margin: 40px auto 0 auto;
+  background-color: #d4d4d4;
+  border-radius: 5px;
+  box-shadow: 3px 3px 4px #aaa;
+}
+.fileuploader {
+    width: 60px;
+    height: 60px;
+    display: flex;
+    margin: 5px auto 0px auto;
+}
+input[type="file"] {
+    display: none;
+}
+.icon {
+    font-size: 60px;
+    color: #3032b6;
+    height: auto;
+}
+.upload_tag_line {
+    text-align: center;
+    margin: 0;
+    font-size: 18px;
+    font-family: 'Poppins', sans-serif;
+}
+.submitbtn {
+    background: #3032b6;
+    color: white;
+    padding: 10px;
+    font-weight: 600;
+    font-size: 15px;
+    border-radius: 5px;
+    width: 100%;
+    position: absolute;
+    bottom: 3px;
+    box-shadow: 0px 1px 10px #cccccc;
+}
+@media screen and (min-width: 600px) {
+  .submitbtn {
+    position: static;
+    width: 120px;
+    padding: 10px 35px;
+    margin: 50px auto;
+    display: flex;
+  }
+}
+
+.uploaded_img {
+    width: 80%;
+    max-width: 400px;
+    display: flex;
+    margin: 5vh auto 0 auto;
+    border-radius: 5px;
+    box-shadow: 10px 10px 10px #cccccc;
+}
+/**
+* loader
+*/
+.lds-ring-container {
+  display: none;
+  width: 64px;
+  margin: auto;
+  margin-top: 20px;
+}
+.lds-ring {
+  display: inline-block;
+  position: relative;
+  width: 64px;
+  height: 64px;
+}
+.lds-ring div {
+  box-sizing: border-box;
+  display: block;
+  position: absolute;
+  width: 51px;
+  height: 51px;
+  margin: 6px;
+  border: 6px solid #3032b6;
+  border-radius: 50%;
+  animation: lds-ring 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+  border-color: #3032b6 transparent transparent transparent;
+}
+.lds-ring div:nth-child(1) {
+  animation-delay: -0.45s;
+}
+.lds-ring div:nth-child(2) {
+  animation-delay: -0.3s;
+}
+.lds-ring div:nth-child(3) {
+  animation-delay: -0.15s;
+}
+@keyframes lds-ring {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+
+  </style>
+  <script>
+  let dataURL
+
+let img_data
+
+function b64toBlob(dataURI) {
+
+  var byteString = atob(dataURI.split(',')[1]);
+  var ab = new ArrayBuffer(byteString.length);
+  var ia = new Uint8Array(ab);
+
+  for (var i = 0; i < byteString.length; i++) {
+      ia[i] = byteString.charCodeAt(i);
+  }
+  return new Blob([ab], { type: 'image/dng' });
+}
+
+function read_file(file) {
+  var input = file.target
+
+  var reader = new FileReader()
+  reader.onload = function(){
+    dataURL = reader.result
+    // let uploaded_img = document.getElementById('uploaded_img')
+    // uploaded_img.src = dataURL
+    console.log(dataURL)
+  }
+  img_data = reader.readAsDataURL(input.files[0])
+} 
+
+// function upload_img() {
+//   const formData = new FormData()
+
+//   var blob = b64toBlob(dataURL)
+
+//   formData.append('uploaded_img', blob)
+//   fetch('http://localhost:5000/upload', {
+//     method: 'POST',
+//     headers: {
+//       "Content-Type": 'multipart/form-data'
+//     },
+//     body: formData
+//   })
+//   .then(res => console.log(res))
+//   .catch(err => console.error(err))
+// }
+function show_loader() {
+    let loader = document.getElementById("loader")
+    loader.style.display = "block"
+}
+
+let input_img= document.getElementById("input-image")
+if (input_img.src) {
+    document.getElementById("p-input").textContent = "Input: "
+    document.getElementById("p-output").textContent = "Output: "
+}
+  </script>
   <title>Nictovision</title>
 </head>
 <body>
-  <nav class="Header">
-  <h2> Nacto Vision </h2>
-  </nav>
-  <form action="http://localhost:5000/upload" method="POST" enctype=multipart/form-data>
+  <h2 class="Header"> Nictovision </h2>
+  <form method="POST" enctype=multipart/form-data>
+   <div class="fileuploaderWrapper">
     <label for="upload_img" class="fileuploader">
+      <!-- <img src="./icons/upload-solid.svg" alt="" class="icon"> -->
       <i class="fas fa-upload icon"></i>
-      <input type="file" accept='image/*' name="upload_img" id="upload_img" onchange="read_file(event)">
+      <input type="file" name="upload_img" id="upload_img" onchange="read_file(event)">
     </label>
-    <input type="submit" value="Submit">
+    <p class="upload_tag_line">Upload Your Files</p>
+   </div>
+   <div id="loader" class="lds-ring-container">
+     <div class="lds-ring"><div></div><div></div><div></div><div></div></div>
+   </div>
+   <p id="p-input"></p>
+   <img id="input-image" src="original/input.png" alt="" class="uploaded_img">
+   <p id="p-output"></p>
+   <img src="result/ios.png" alt="" class="uploaded_img">
+   <div>
+    <input type="submit" class="submitbtn" value="Submit" onclick="show_loader()">
+   </div>
   </form>
-  <img src="" alt="" id="uploaded_img">
 </body>
 </html>
