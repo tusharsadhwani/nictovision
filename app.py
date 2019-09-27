@@ -13,9 +13,20 @@ def homepage():
         return f.read()
 
 @app.route('/result/ios.png', methods=['GET'])
-def icon():
-    with open('result/ios.png', 'rb') as f:
-        return f.read()
+def result():
+    if os.path.exists('result/ios.png'):
+        with open('result/ios.png', 'rb') as f:
+            return f.read()
+    
+    return ""
+
+@app.route('/original/input.png', methods=['GET'])
+def orig():
+    if os.path.exists('original/input.png'):
+        with open('original/input.png', 'rb') as f:
+            return f.read()
+    
+    return ""
 
 @app.route('/', methods=['POST'])
 def upload_img():

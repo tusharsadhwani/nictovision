@@ -4,25 +4,35 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Poppins&display=swap" rel="stylesheet">
   <style>
   body {
     margin: 0;
+    font-family: 'Open Sans', sans-serif;
+    background-color: #f8fafb;
 }
 .Header {
     text-align: center;
-    background: #2c2b2b;
-    color: #fff;
+    box-shadow: 0px 1px 10px #cccccc;
+    color: #222;
     font-weight: bolder;
-    font-size: 26px;
+    font-size: 22px;
     padding: 10px 0;
     width: 100%;
     margin: 0;
 }
-
+.fileuploaderWrapper {
+  padding: 15px 0;
+  width: 250px;
+  margin: 40px auto 0 auto;
+  background-color: #d4d4d4;
+  border-radius: 5px;
+  box-shadow: 3px 3px 4px #aaa;
+}
 .fileuploader {
-    width: 70px;
-    height: 70px;
-    padding: 32px 0 5px 0;
+    width: 60px;
+    height: 60px;
     display: flex;
     margin: 5px auto 0px auto;
 }
@@ -30,16 +40,18 @@ input[type="file"] {
     display: none;
 }
 .icon {
-    width: 100%;
+    font-size: 60px;
+    color: #3032b6;
     height: auto;
 }
 .upload_tag_line {
     text-align: center;
     margin: 0;
-    font-size: 25px;
+    font-size: 18px;
+    font-family: 'Poppins', sans-serif;
 }
 .submitbtn {
-    background: black;
+    background: #3032b6;
     color: white;
     padding: 10px;
     font-weight: 600;
@@ -48,12 +60,25 @@ input[type="file"] {
     width: 100%;
     position: absolute;
     bottom: 3px;
+    box-shadow: 0px 1px 10px #cccccc;
+}
+@media screen and (min-width: 600px) {
+  .submitbtn {
+    position: static;
+    width: 120px;
+    padding: 10px 35px;
+    margin: 50px auto;
+    display: flex;
+  }
 }
 
-#uploaded_img {
+.uploaded_img {
     width: 80%;
+    max-width: 400px;
     display: flex;
-    margin: auto;
+    margin: 5vh auto 0 auto;
+    border-radius: 5px;
+    box-shadow: 10px 10px 10px #cccccc;
 }
   </style>
   <script>
@@ -106,18 +131,23 @@ function read_file(file) {
   <title>Nictovision</title>
 </head>
 <body>
-  <h2 class="Header"> Nacto Vision </h2>
+  <h2 class="Header"> Nictovision </h2>
   <form method="POST" enctype=multipart/form-data>
+   <div class="fileuploaderWrapper">
     <label for="upload_img" class="fileuploader">
       <!-- <img src="./icons/upload-solid.svg" alt="" class="icon"> -->
       <i class="fas fa-upload icon"></i>
       <input type="file" name="upload_img" id="upload_img" onchange="read_file(event)">
     </label>
     <p class="upload_tag_line">Upload Your Files</p>
-    <div>
-      <input type="submit" class="submitbtn" value="Submit">
-    </div>
+   </div>
+   <p>Input:</p>
+   <img src="original/input.png" alt="" class="uploaded_img">
+   <p>Output:</p>
+   <img src="result/ios.png" alt="" class="uploaded_img">
+   <div>
+    <input type="submit" class="submitbtn" value="Submit">
+   </div>
   </form>
-  <img src="result/ios.png" alt="" id="uploaded_img">
 </body>
 </html>
