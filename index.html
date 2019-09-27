@@ -13,7 +13,7 @@
   <nav class="Header">
   <h2> Nacto Vision </h2>
   </nav>
-  <form action="/upload" method="POST" enctype=multipart/form-data>
+  <form action="http://localhost:5000/upload" method="POST" enctype=multipart/form-data>
     <label for="upload_img" class="fileuploader">
       <i class="fas fa-upload icon"></i>
       <input type="file" accept='image/*' name="upload_img" id="upload_img" onchange="read_file(event)">
