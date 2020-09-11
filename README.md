@@ -1,4 +1,7 @@
-# __Nictovision__
+# Nictovision
+
+A project made for a hackathon. It brightens dark RAW .DNG format images without introducing noise.
+
 ### Prerequisites
 - Browser (Chrome or safari)
 - Python
